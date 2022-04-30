@@ -4,13 +4,31 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### This Example uses Bloc 
+## Steps To Work With This Example :
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Create New Firebase Project
+#### Enable Email Method In Authantcation Section
+#### Change Storage Rules To The Following 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### rules_version = '2';
+
+##### service firebase.storage {
+##### match /b/{bucket}/o {
+#####  function isFolderOwner(userId){
+#####  return request.auth != null && request.auth.uid == userId;
+#####  }
+#####    match /{userId}/{allPaths=**} {
+#####      allow create, read, update, write : if isFolderOwner(userId);
+#####    }
+#####  }
+#####  }
+
+#### Connect You App With Firebase You Can Follow Steps In This Link
+#### https://firebase.flutter.dev/docs/overview#installation
+### In The Terminal Run This Command flutter pub get
+
+
+
+## .................__
